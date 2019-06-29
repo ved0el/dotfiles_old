@@ -1,0 +1,5 @@
+/.emacs.d/backups
+/.emacs/auto-save-list
+/.emacs.d/undohist
+/.tmux/plugins/
+/.tmux/
