@@ -7,9 +7,6 @@
 [submodule ".emacs.d/public_repos/undohist-el"]
 	path = .emacs.d/public_repos/undohist-el
 	url = https://github.com/m2ym/undohist-el.git
-[submodule ".emacs.d/public_repos/yatex"]
-	path = .emacs.d/public_repos/yatex
-	url = https://www.yatex.org/gitbucket/git/yuuji/yatex.git
 [submodule ".emacs.d/public_repos/solarized-emacs"]
 	path = .emacs.d/public_repos/solarized-emacs
 	url = https://github.com/bbatsov/solarized-emacs.git
