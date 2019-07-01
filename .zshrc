@@ -88,10 +88,17 @@ zplug "liangguohuan/zsh-dircolors-solarized"
 # ZSH completion
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
+# Default 256bit terminal
 zplug "chrissicool/zsh-256color"
+# sudo plugin (ESC to add sudo to last command)
 zplug "plugins/sudo",   from:oh-my-zsh
+# Web-search plugin (type google[firefox]  [search-phrase]) 
 zplug "plugins/web-search", from:oh-my-zsh
-
+# Pure theme
+#zplug mafredri/zsh-async, from:github
+#zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+# Spaceship theme
+zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 # Change color of suggestion
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=243'
 # Directory colors
