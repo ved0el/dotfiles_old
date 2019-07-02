@@ -16,3 +16,6 @@
 [submodule ".emacs.d/public_repos/yatex"]
 	path = .emacs.d/public_repos/yatex
 	url = https://www.yatex.org/gitbucket/git/yuuji/yatex.git
+[submodule ".zplugin/bin"]
+	path = .zplugin/bin
+	url = https://github.com/zdharma/zplugin.git

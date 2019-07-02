@@ -28,6 +28,9 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # sudo の後ろでコマンド名を補完する
 zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
 
+# Change color of suggestion
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=243'
+
 ##履歴関係
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
@@ -50,86 +53,11 @@ setopt hist_reduce_blanks
 # cdコマンドを省略して、ディレクトリ名のみの入力で移動
 setopt auto_cd
 # cdの後にlsを実行
-#    chpwd() { ls -ltr --color=auto }
+chpwd() { ls -ltr --color=auto }
 # ビープ音を鳴らさないようにする
 setopt no_beep
 # コマンドのスペルを訂正する
-setopt correct
-
-# zplug init
-source ~/.zplug/init.zsh
-# zplugを.zshrcさえ持ってくればインストールできるようにする
-function zplug-install (){
-	curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-}
-
-## zplug plugins ##
-# manage 'zplug' ifself
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-zplug "mafredri/zsh-async"
-# fzf command-line fuzzy finder
-zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
-# fzf tmux plugin
-zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
-# peco
-zplug "peco/peco", as:command, from:gh-r, use:"*amd64*"
-# peco-tmux
-zplug "b4b4r07/dotfiles", as:command, use:bin/peco-tmux
-# Speed up dir change
-zplug "b4b4r07/enhancd", use:init.sh
-# Highlight syntax
-zplug "zdharma/fast-syntax-highlighting"
-# Search in history
-zplug "zsh-users/zsh-history-substring-search"
-# Emoji in terminal
-zplug "b4b4r07/emoji-cli"
-# Solarized for dir color
-zplug "liangguohuan/zsh-dircolors-solarized"
-# ZSH completion
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
-# Default 256bit terminal
-zplug "chrissicool/zsh-256color"
-# sudo plugin (ESC to add sudo to last command)
-zplug "plugins/sudo",   from:oh-my-zsh
-# Web-search plugin (type google[firefox]  [search-phrase]) 
-zplug "plugins/web-search", from:oh-my-zsh
-# Pure theme
-#zplug mafredri/zsh-async, from:github
-#zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
-# Spaceship theme
-zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
-# Change color of suggestion
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=243'
-# Directory colors
-zplug "seebi/dircolors-solarized", ignore:"*", as:plugin
-# Tmux solarzed
-zplug  'seebi/tmux-colors-solarized', as:plugin
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-# Then, source plugins and add commands to $PATH
-zplug load
-
-## percol config
-function exists { which $1 &> /dev/null }
-
-if exists percol; then
-    function percol_select_history() {
-        local tac
-        exists gtac && tac="gtac" || { exists tac && tac="tac" || { tac="tail -r" } }
-        BUFFER=$(fc -l -n 1 | eval $tac | percol --query "$LBUFFER")
-        CURSOR=$#BUFFER         # move cursor
-        zle -R -c               # refresh
-    }
-    
-    zle -N percol_select_history
-    bindkey '^R' percol_select_history
-fi
+#setopt correct
 
 ## Auto attach and detach tmux when login or logout shell
 function is_exists() { type "$1" >/dev/null 2>&1; return $?; }
@@ -197,3 +125,48 @@ tmux_automatically_attach_session
 
 ## エイリアス ##
 source ~/.dotfiles/zsh/*.zsh
+
+### Added by Zplugin's installer
+source "$HOME/.zplugin/bin/zplugin.zsh"
+autoload -Uz _zplugin
+# プラグインが使うコマンドをこのタイミングで autoload しておきます。
+autoload -Uz add-zsh-hook
+autoload -Uz cdr
+autoload -Uz chpwd_recent_dirs
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+### End of Zplugin's installer chunk
+
+## zplug plugins ##
+zplugin light "mafredri/zsh-async"
+# rename tmux windows base on git branch name
+zplugin light 'sei40kr/zsh-tmux-rename'
+# 作業ディレクトリに .env ファイルがあった場合に自動的にロードしてくれます。
+zplugin snippet 'OMZ::plugins/dotenv/dotenv.plugin.zsh'
+# エイリアスは重宝するものが多く、Gitを使うユーザーには必ずオススメしたいプラグインです。
+zplugin snippet 'OMZ::plugins/git/git.plugin.zsh'
+# GitHub のレポジトリを管理するためのコマンドを定義するプラグインです。
+zplugin snippet 'OMZ::plugins/github/github.plugin.zsh'
+# fzf command-line fuzzy finder
+zplugin ice from"gh-r" as"program"; zplugin load junegunn/fzf-bin
+# Speed up dir change
+zplugin light "b4b4r07/enhancd"
+# Highlight syntax
+zplugin ice wait'1' atload'_zsh_highlight'
+zplugin light 'zdharma/fast-syntax-highlighting'
+# Search in history
+zplugin light "zsh-users/zsh-history-substring-search"
+# ZSH auto-suggest
+zplugin ice wait'1' atload'_zsh_autosuggest_start'
+# ZSH completion
+zplugin light "zsh-users/zsh-completions"
+# Default 256bit terminal
+zplugin light "chrissicool/zsh-256color"
+# sudo plugin (ESC to add sudo to last command)
+zplugin snippet"OMZ::plugins/sudo/sudo.plugin.zsh"
+# Web-search plugin (type google[firefox]  [search-phrase]) 
+zplugin snippet 'OMZ::plugins/web-search/web-search.plugin.zsh'
+# Spaceship theme
+zplugin ice pick'spaceship.zsh' wait'!0'
+zplugin light 'denysdovhan/spaceship-zsh-theme'
+# sudo plugin
+zplugin snippet 'OMZ::plugins/sudo/sudo.plugin.zsh'
