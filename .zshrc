@@ -153,20 +153,19 @@ zplugin light "b4b4r07/enhancd"
 # Highlight syntax
 zplugin ice wait'1' atload'_zsh_highlight'
 zplugin light 'zdharma/fast-syntax-highlighting'
-# Search in history
-zplugin light "zsh-users/zsh-history-substring-search"
 # ZSH auto-suggest
 zplugin ice wait'1' atload'_zsh_autosuggest_start'
+zplugin light 'zsh-users/zsh-autosuggestions'
 # ZSH completion
-zplugin light "zsh-users/zsh-completions"
+zplugin ice wait'!0'; zplugin load zsh-users/zsh-completions 
 # Default 256bit terminal
 zplugin light "chrissicool/zsh-256color"
 # sudo plugin (ESC to add sudo to last command)
 zplugin snippet"OMZ::plugins/sudo/sudo.plugin.zsh"
 # Web-search plugin (type google[firefox]  [search-phrase]) 
 zplugin snippet 'OMZ::plugins/web-search/web-search.plugin.zsh'
+# sudo plugin
+zplugin snippet 'OMZ::plugins/sudo/sudo.plugin.zsh'
 # Spaceship theme
 zplugin ice pick'spaceship.zsh' wait'!0'
 zplugin light 'denysdovhan/spaceship-zsh-theme'
-# sudo plugin
-zplugin snippet 'OMZ::plugins/sudo/sudo.plugin.zsh'
