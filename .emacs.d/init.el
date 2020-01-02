@@ -174,7 +174,7 @@
 ;; 1 = Shift_JIS, 2 = ISO-2022-JP, 3 = EUC-JP, 4 = UTF-8
 (setq YaTeX-kanji-code nil)             ;; default kanji code
 (setq tex-command "platex")             ;; compile command
-(setq dvi2-command "google-chrome")            ;; preview command
+(setq dvi2-command "google-chrome")     ;; preview command
 (setq YaTeX-nervous nil)                ;; use users dictionary
 ;; only use C-c b to autocomplete
 (setq YaTeX-no-begend-shortcut -1)
