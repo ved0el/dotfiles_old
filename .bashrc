@@ -135,3 +135,6 @@ export PAGER="most"
 
 # path for Laravel
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+
+# path for custom command
+export PATH=$PATH":$HOME/bin"
