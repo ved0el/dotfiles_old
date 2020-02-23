@@ -1,21 +1,6 @@
-[submodule ".emacs.d/public_repos/linum-highlight-current-line-number"]
-	path = .emacs.d/public_repos/linum-highlight-current-line-number
-	url = https://github.com/targzeta/linum-highlight-current-line-number.git
 [submodule ".zplug"]
 	path = .zplug
 	url = https://github.com/zplug/zplug.git
-[submodule ".emacs.d/public_repos/undohist-el"]
-	path = .emacs.d/public_repos/undohist-el
-	url = https://github.com/m2ym/undohist-el.git
-[submodule ".emacs.d/public_repos/solarized-emacs"]
-	path = .emacs.d/public_repos/solarized-emacs
-	url = https://github.com/bbatsov/solarized-emacs.git
-[submodule ".emacs.d/public_repos/emacs-color-theme-solarized"]
-	path = .emacs.d/public_repos/emacs-color-theme-solarized
-	url = https://github.com/sellout/emacs-color-theme-solarized.git
-[submodule ".emacs.d/public_repos/yatex"]
-	path = .emacs.d/public_repos/yatex
-	url = https://www.yatex.org/gitbucket/git/yuuji/yatex.git
 [submodule ".zplugin/bin"]
 	path = .zplugin/bin
 	url = https://github.com/zdharma/zplugin.git
