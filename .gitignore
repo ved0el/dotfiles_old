@@ -1,7 +1,5 @@
-/.emacs.d/backups
-/.emacs/auto-save-list
-/.emacs.d/undohist
-/.tmux/plugins/
-/.tmux/
-/.zplugin/
-/bin/tosinkai*
+.tmux/plugins/
+.tmux/
+bin/tosinkai*
+.zplugin/bin
+.zplugin
