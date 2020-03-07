@@ -1,5 +1,5 @@
 .tmux/plugins/
 .tmux/
+.zinit/bin
+.zinit
 bin/tosinkai*
-.zplugin/bin
-.zplugin
