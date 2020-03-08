@@ -548,7 +548,7 @@ dotfiles_install() {
 
     # 2. Deploy dotfiles to your home directory
     # ==> deploying
-    dotfiles_deploy
+    dotfiles_deploy "$@"
 }
 
 if echo "$-" | grep -q "i"; then
