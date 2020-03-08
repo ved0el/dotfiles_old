@@ -571,11 +571,11 @@ dotfiles_install() {
 
     # 2. Deploy dotfiles to your home directory
     # ==> deploying
-    dotfiles_install &&
+    dotfiles_install
 
     # 3. Execute all sh files within etc/init/
     # ==> initializing
-    dotfiles_initialize "$@"
+    #dotfiles_initialize "$@"
 }
 
 if echo "$-" | grep -q "i"; then
