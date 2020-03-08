@@ -538,29 +538,6 @@ dotfiles_install() {
         e_newline && e_done "Deploy"
 }
 
-dotfiles_initialize() {
-    if [ "$1" = "init" ]; then
-        e_newline
-        e_header "Initializing dotfiles..."
-
-        if is_debug; then
-            :
-        else
-            if [ -f Makefile ]; then
-                #DOTPATH="$(dotpath)"
-                #export DOTPATH
-                #bash "$DOTPATH"/etc/init/init.sh
-                #make init
-            else
-                log_fail "Makefile: not found"
-                exit 1
-            fi
-        fi &&
-
-            e_newline && e_done "Initialize"
-    fi
-}
-
 # A script for the file named "install"
 dotfiles_install() {
     # 1. Download the repository
@@ -572,10 +549,6 @@ dotfiles_install() {
     # 2. Deploy dotfiles to your home directory
     # ==> deploying
     dotfiles_install
-
-    # 3. Execute all sh files within etc/init/
-    # ==> initializing
-    #dotfiles_initialize "$@"
 }
 
 if echo "$-" | grep -q "i"; then
