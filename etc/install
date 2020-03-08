@@ -518,7 +518,7 @@ dotfiles_download() {
     e_newline && e_done "Download"
 }
 
-dotfiles_deploy() {
+dotfiles_install() {
     e_newline
     e_header "Deploying dotfiles..."
 
@@ -532,7 +532,7 @@ dotfiles_deploy() {
     if is_debug; then
         :
     else
-        make deploy
+        make install
     fi &&
 
         e_newline && e_done "Deploy"
@@ -550,7 +550,7 @@ dotfiles_initialize() {
                 #DOTPATH="$(dotpath)"
                 #export DOTPATH
                 #bash "$DOTPATH"/etc/init/init.sh
-                make init
+                #make init
             else
                 log_fail "Makefile: not found"
                 exit 1
@@ -571,7 +571,7 @@ dotfiles_install() {
 
     # 2. Deploy dotfiles to your home directory
     # ==> deploying
-    dotfiles_deploy &&
+    dotfiles_install &&
 
     # 3. Execute all sh files within etc/init/
     # ==> initializing
