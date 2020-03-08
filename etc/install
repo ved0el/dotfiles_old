@@ -518,7 +518,7 @@ dotfiles_download() {
     e_newline && e_done "Download"
 }
 
-dotfiles_install() {
+dotfiles_deploy() {
     e_newline
     e_header "Deploying dotfiles..."
 
@@ -548,7 +548,7 @@ dotfiles_install() {
 
     # 2. Deploy dotfiles to your home directory
     # ==> deploying
-    dotfiles_install
+    dotfiles_deploy
 }
 
 if echo "$-" | grep -q "i"; then
