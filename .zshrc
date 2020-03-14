@@ -10,8 +10,6 @@ autoload -Uz colors
 colors
 # Add color for 'ls' command
 export CLICOLOR=true
-# Add color for completion
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # Change color of suggestion
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=243'
 
@@ -40,10 +38,17 @@ setopt auto_cd
 chpwd() { ls -ltr --color=auto }
 # Turn off alert sound
 setopt no_beep
-# Checking command spell
-#setopt correct
 
-## Auto attach and detach tmux when login or logout shell
+# Add color for completion
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+# 補完後、メニュー選択モードになり左右キーで移動が出来る
+zstyle ':completion:*:default' menu select=1
+# 補完で大文字にもマッチ
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# sudo の後ろでコマンド名を補完する
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /.dotfiles/bin
+
+# Auto attach and detach tmux when login or logout shell
 function is_exists() { type "$1" >/dev/null 2>&1; return $?; }
 function is_osx() { [[ $OSTYPE == darwin* ]]; }
 function is_screen_running() { [ ! -z "$STY" ]; }
@@ -107,9 +112,6 @@ function tmux_automatically_attach_session()
 
 tmux_automatically_attach_session
 
-## エイリアス ##
-source ~/.dotfiles/zsh/*.zsh
-
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
@@ -118,50 +120,36 @@ if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
         print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
         print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
-
+# Source Zinit
 source "$HOME/.zinit/bin/zinit.zsh"
-autoload -Uz _zinit
-(( ${+_comps} )) && _comps[zinit]=_zinit
-### End of Zinit's installer chunk
+## エイリアス ##
+source ~/.dotfiles/zsh/*.zsh
 
-# Zinit plugins
-# zinit light "mafredri/zsh-async"
-# # rename tmux windows base on git branch name
-# zinit light 'sei40kr/zsh-tmux-rename'
-# # 作業ディレクトリに .env ファイルがあった場合に自動的にロードしてくれます。
-# zinit snippet 'OMZ::plugins/dotenv/dotenv.plugin.zsh'
-# # エイリアスは重宝するものが多く、Gitを使うユーザーには必ずオススメしたいプラグインです。
-# # fzf command-line fuzzy finder
-# zinit ice from"gh-r" as"program"; zinit load junegunn/fzf-bin
-# # Speed up dir change
-# zinit light "b4b4r07/enhancd"
-# # Highlight syntax
-# zinit ice wait'1' atload'_zsh_highlight'
-# zinit light 'zdharma/fast-syntax-highlighting'
-# # ZSH auto-suggest
-# zinit ice wait'1' atload'_zsh_autosuggest_start'
-# zinit light 'zsh-users/zsh-autosuggestions'
-# # ZSH completion
-# zinit ice wait'!0'; zinit load zsh-users/zsh-completions
-# # Default 256bit terminal
-# zinit light "chrissicool/zsh-256color"
-# sudo plugin (ESC to add sudo to last command)
-# # zinit snippet"OMZ::plugins/sudo/sudo.plugin.zsh"
-# # Web-search plugin (type google[firefox]  [search-phrase])
-# zinit snippet 'OMZ::plugins/web-search/web-search.plugin.zsh'
-# # sudo plugin
-# zinit snippet 'OMZ::plugins/sudo/sudo.plugin.zsh'
-# # Spaceship theme
-# zinit ice pick'spaceship.zsh' wait'!0'
-# zinit light 'denysdovhan/spaceship-zsh-theme'
-# zinit ice as"completion"
-# zinit snippet https://github.com/zsh-users/zsh-completions/blob/master/src/_setcap
-# 補完関係 ##
-# autoload -Uz compinit
-# compinit
-# # 補完後、メニュー選択モードになり左右キーで移動が出来る
-# zstyle ':completion:*:default' menu select=1
-# # 補完で大文字にもマッチ
-# zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-# # sudo の後ろでコマンド名を補完する
-# # zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+# Zinit plugins with Turbo mode
+zinit wait lucid for \
+    light-mode  mafredri/zsh-async \
+                chrissicool/zsh-256color \
+                b4b4r07/enhancd \
+                denysdovhan/spaceship-zsh-theme
+
+# Customize theme
+# Show time
+SPACESHIP_TIME_SHOW=true
+
+# Binary release in archive, from GitHub-releases page.
+# After automatic unpacking it provides program "fzf".
+zinit ice from"gh-r" as"program"
+zinit load junegunn/fzf-bin
+
+# Sudo plugin (ESC to add sudo to last command)
+zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
+# Web-search plugin (type google[firefox]  [search-phrase])
+zinit snippet OMZ::plugins/web-search/web-search.plugin.zsh
+
+zinit wait lucid for \
+ atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma/fast-syntax-highlighting \
+ blockf \
+    zsh-users/zsh-completions \
+ atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions

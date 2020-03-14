@@ -13,10 +13,11 @@ alias egrep='egrep --color=auto'
 # Show IP
 alias myip="curl inet-ip.info"
 
-# ls 
+# ls
 alias ls="ls --color=always"
 alias la="ls -al"
-alias zshrc="emacs ~/.zshrc"
+alias zshrc="code ~/.zshrc"
+alias tmux.conf="code ~/.tmux.conf"
 
 # Update
 alias sau="sudo apt update && sudo apt upgrade"
@@ -34,7 +35,5 @@ alias gch="git checkout"
 alias gst="git status"
 
 # Others
-alias editalias="emacs ~/.dotfiles/zsh/01_aliases.zsh"
+alias editalias="code ~/.dotfiles/zsh/01_aliases.zsh"
 alias reboot="sudo reboot now"
-alias evince="google-chrome"
-alias chrome="google-chrome"
