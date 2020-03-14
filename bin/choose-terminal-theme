@@ -1,0 +1,3 @@
+#!/bin/bash
+# Gogh color scheme for Gnome terminal
+bash -c  "$(wget -qO- https://git.io/vQgMr)"
