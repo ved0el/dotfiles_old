@@ -17,13 +17,13 @@ alias myip="curl inet-ip.info"
 alias ls="ls --color=always"
 alias la="ls -al"
 alias zshrc="code ~/.zshrc"
-alias tmux.conf="code ~/.tmux.conf"
+alias tmuxconf="code ~/.tmux.conf"
 
 # Update
-alias sau="sudo apt update && sudo apt upgrade"
-alias sap="sudo apt purge"
-alias sai="sudo apt install"
-alias saa="sudo apt autoremove -y"
+alias sau="sudo apt-fast update && sudo apt-fast upgrade"
+alias sap="sudo apt-fast purge"
+alias sai="sudo apt-fast install"
+alias saa="sudo apt-fast autoremove -y"
 alias rmf="sudo rm -rf"
 alias acs="apt-cache search"
 
@@ -37,3 +37,4 @@ alias gst="git status"
 # Others
 alias editalias="code ~/.dotfiles/zsh/01_aliases.zsh"
 alias reboot="sudo reboot now"
+alias shutdown="sudo shutdown"
