@@ -112,7 +112,6 @@ function tmux_automatically_attach_session()
 
 tmux_automatically_attach_session
 
-### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing DHARMA Initiative Plugin Manager (zdharma/zinit)…%f"
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
@@ -120,21 +119,36 @@ if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
         print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
         print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
+
 # Source Zinit
-source "$HOME/.zinit/bin/zinit.zsh"
-## エイリアス ##
+source $HOME/.zinit/bin/zinit.zsh
+# Alias
 source ~/.dotfiles/zsh/*.zsh
 
 # Zinit plugins with Turbo mode
 zinit wait lucid for \
     light-mode  mafredri/zsh-async \
                 chrissicool/zsh-256color \
-                b4b4r07/enhancd \
-                denysdovhan/spaceship-zsh-theme
+    atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+                zdharma/fast-syntax-highlighting \
+    blockf \
+                zsh-users/zsh-completions \
+    atload"!_zsh_autosuggest_start" \
+                zsh-users/zsh-autosuggestions
 
-# Customize theme
+# Theme
+zinit light "denysdovhan/spaceship-zsh-theme"
 # Show time
 SPACESHIP_TIME_SHOW=true
+
+# Enhancd plugin
+zinit ice \
+  atclone'rm -rf conf.d; rm -rf functions; rm -f *.fish;' \
+  pick'init.sh' \
+  nocompile'!' \
+  wait'!0'
+zinit light b4b4r07/enhancd
+
 
 # Binary release in archive, from GitHub-releases page.
 # After automatic unpacking it provides program "fzf".
@@ -145,11 +159,3 @@ zinit load junegunn/fzf-bin
 zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
 # Web-search plugin (type google[firefox]  [search-phrase])
 zinit snippet OMZ::plugins/web-search/web-search.plugin.zsh
-
-zinit wait lucid for \
- atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma/fast-syntax-highlighting \
- blockf \
-    zsh-users/zsh-completions \
- atload"!_zsh_autosuggest_start" \
-    zsh-users/zsh-autosuggestions
