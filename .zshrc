@@ -123,7 +123,7 @@ fi
 # Source Zinit
 source $HOME/.zinit/bin/zinit.zsh
 # Alias
-source ~/.dotfiles/zsh/*.zsh
+source $HOME/.dotfiles/zsh/*.zsh
 
 # Zinit plugins with Turbo mode
 zinit wait lucid for \
