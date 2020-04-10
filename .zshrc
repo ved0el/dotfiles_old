@@ -39,6 +39,9 @@ chpwd() { ls -ltr --color=auto }
 # Turn off alert sound
 setopt no_beep
 
+# Enable dir color
+eval `dircolors $HOME/.dircolors/dircolors.ansi-universal`
+
 # Add color for completion
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # 補完後、メニュー選択モードになり左右キーで移動が出来る
