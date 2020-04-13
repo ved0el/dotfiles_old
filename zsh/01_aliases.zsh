@@ -4,22 +4,23 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-# Always enable colored `grep` output
-# Note: `GREP_OPTIONS="--color=auto"` is deprecated, hence the alias usage.
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+# Always enable colored "grep" output
+alias grep="grep --color=auto"
+alias fgrep="fgrep --color=auto"
+alias egrep="egrep --color=auto"
 
 # Show IP
-alias myip="curl inet-ip.info"
+alias publicIP="curl inet-ip.info"
+alias localIP="ifconfig | grep 'inet ' | sed -e 's/^.*inet //' -e 's/ .*//'"
 
 # ls
-alias ls="ls --color=always"
-alias la="ls -al"
-alias zshrc="code ~/.zshrc"
-alias tmuxconf="code ~/.tmux.conf"
+alias ls="lsd"
+alias l="ls -l"
+alias la="ls -a"
+alias lla="ls -la"
+alias lt="ls --tree"
 
-# Update
+# Apt
 alias sau="sudo apt-fast update && sudo apt-fast upgrade"
 alias sap="sudo apt-fast purge"
 alias sai="sudo apt-fast install"
@@ -35,6 +36,9 @@ alias gch="git checkout"
 alias gst="git status"
 
 # Others
-alias editalias="code ~/.dotfiles/zsh/01_aliases.zsh"
 alias reboot="sudo reboot now"
 alias shutdown="sudo shutdown"
+alias editalias="code ~/.dotfiles/zsh/01_aliases.zsh"
+alias zshrc="code ~/.zshrc"
+alias tmuxconf="code ~/.tmux.conf"
+alias top="htop"
