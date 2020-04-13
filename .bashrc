@@ -78,7 +78,7 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
-    
+
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
@@ -129,12 +129,3 @@ function nonzero_return() {
 
 # colorful for Terminal
 export PS1="\[\e[37m\]\`nonzero_return\`\[\e[m\]\[\e[35m\][\[\e[m\]\[\e[35m\]\A\[\e[m\]\[\e[35m\]]\[\e[m\] \[\e[31m\]\u\[\e[m\]\[\e[36m\]@\[\e[m\]\[\e[32m\]\h\[\e[m\]:\[\e[33m\]\W\[\e[m\]\[\e[36m\]\\$\[\e[m\]"
-
-# add color for "man" command
-export PAGER="most"
-
-# path for Laravel
-export PATH="$PATH:$HOME/.config/composer/vendor/bin"
-
-# path for custom command
-export PATH=$PATH":$HOME/bin"
