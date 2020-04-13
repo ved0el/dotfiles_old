@@ -2,6 +2,7 @@
 export GOROOT=$HOME/.go
 export PATH=$PATH:$GOROOT/bin
 export GOBIN=$GOROOT/bin
+export GOPATH=$HOME/.go
 # PATH for some owned script
 export PATH=$PATH:$HOME/.dotfiles/bin
 
