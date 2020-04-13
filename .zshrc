@@ -1,5 +1,5 @@
 # Enviroment setup for Go lang
-export GOROOT=/usr/lib/go
+export GOROOT=$HOME/.go
 export PATH=$PATH:$GOROOT/bin
 export GOBIN=$GOROOT/bin
 # PATH for some owned script
