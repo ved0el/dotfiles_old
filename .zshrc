@@ -161,5 +161,3 @@ zinit load junegunn/fzf-bin
 
 # Sudo plugin (ESC to add sudo to last command)
 zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
-# Web-search plugin (type google[firefox]  [search-phrase])
-zinit snippet OMZ::plugins/web-search/web-search.plugin.zsh
