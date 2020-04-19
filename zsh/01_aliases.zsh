@@ -1,10 +1,11 @@
-# Easier navigation: .., ..., ...., ....., ~ and -
+# cd
+alias ~="cd $HOME"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
-# Always enable colored "grep" output
+# grep
 alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
@@ -20,12 +21,25 @@ alias la="ls -a"
 alias lla="ls -la"
 alias lt="ls --tree"
 
-# Apt
+# remove
+alias rmf="sudo rm -rfi"
+alias rm="echo '🈲PROHIBITED🈲\nPlease use [trash] command.'; false"
+
+# yay
+alias yi="yay -S"
+alias yr="yay -Rs"
+alias ys="yay -Ss"
+alias yu="yay -Syu"
+alias yar="yay -Qdtq | yay -Rs -"
+alias ysi="yay -Si"
+alias yrm="yay -Scc"
+alias yli="yay -Qqe"
+
+# apt
 alias sau="sudo apt-fast update && sudo apt-fast upgrade"
 alias sap="sudo apt-fast purge"
 alias sai="sudo apt-fast install"
 alias saa="sudo apt-fast autoremove -y"
-alias rmf="sudo rm -rf"
 alias acs="apt-cache search"
 
 # git
@@ -35,10 +49,12 @@ alias gcm="git commit"
 alias gch="git checkout"
 alias gst="git status"
 
+# top
+alias top="htop"
+
 # Others
 alias reboot="sudo reboot now"
 alias shutdown="sudo shutdown"
 alias editalias="code ~/.dotfiles/zsh/01_aliases.zsh"
 alias zshrc="code ~/.zshrc"
 alias tmuxconf="code ~/.tmux.conf"
-alias top="htop"
