@@ -1,7 +1,6 @@
 # Enviroment setup for Go lang
-export GOROOT=$HOME/.go
-export PATH=$PATH:$GOROOT/bin
-export GOBIN=$GOROOT/bin
+export PATH=$PATH:$GOPATH/bin
+export GOBIN=$GOPATH/bin
 export GOPATH=$HOME/.go
 # PATH for some owned script
 export PATH=$PATH:$HOME/.dotfiles/bin
@@ -36,7 +35,7 @@ setopt hist_reduce_blanks
 # Omit 'cd' for directory moving command
 setopt auto_cd
 # Execute 'ls' commnad after diretory moving
-chpwd() { ls -ltr --color=auto }
+# chpwd() { ls -ltr --color=auto }
 # Turn off alert sound
 setopt no_beep
 
@@ -126,9 +125,10 @@ fi
 
 # Source Zinit
 source $HOME/.zinit/bin/zinit.zsh
-# Alias
-source $HOME/.dotfiles/zsh/*.zsh
-
+# Source other config
+for f in $HOME/.dotfiles/zsh/*.zsh ;do
+    source $f
+done
 # Zinit plugins with Turbo mode
 zinit wait lucid for \
     light-mode  mafredri/zsh-async \
@@ -141,9 +141,13 @@ zinit wait lucid for \
                 zsh-users/zsh-autosuggestions
 
 # Theme
-zinit light "denysdovhan/spaceship-zsh-theme"
-# Show time
-SPACESHIP_TIME_SHOW=true
+zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+zinit light sindresorhus/pure
+# zinit light "denysdovhan/spaceship-zsh-theme"
+# # Show time
+#  SPACESHIP_TIME_SHOW=true
+zstyle :prompt:pure:git:stash show yes
+PROMPT='%F{white}%* '$PROMPT
 
 # Enhancd plugin
 zinit ice \
