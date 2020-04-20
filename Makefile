@@ -1,6 +1,6 @@
 DOTPATH    := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 CANDIDATES := $(wildcard .??*)
-EXCLUSIONS := .DS_Store .git .gitmodules .travis.yml .gitignore
+EXCLUSIONS := .DS_Store .git .gitmodules .travis.yml .gitignore .vscode .config
 DOTFILES   := $(filter-out $(EXCLUSIONS), $(CANDIDATES))
 
 .DEFAULT_GOAL := help
@@ -11,9 +11,10 @@ list: ## Show dot files in this repo
 	@$(foreach val, $(DOTFILES), /bin/ls -dF $(val);)
 
 install: ## Create symlink to home directory
-	@echo '==> Start to deploy dotfiles to home directory.'
+	@echo '==> Start to deploy dotfiles to $DOTFILES.'
 	@echo ''
-	@$(foreach val, $(DOTFILES), ln -sfnv $(abspath $(val)) $(HOME)/$(val);)
+	@$(foreach val, $(DOTFILES), ln -sfnv $(realpath $(val)) $(HOME)/$(val);)
+	@ln -snvf $(CURDIR)/.config/*$< $(HOME)/.config/$<
 
 update: ## Fetch changes for this repo
 	git pull origin master
@@ -29,4 +30,4 @@ clean: ## Remove the dot files and this repo
 help: ## Self-documented Makefile
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
 		| sort \
-		| awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
+		| awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-30s\033[0m %s\n", $$1, $$2}'
