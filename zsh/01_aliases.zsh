@@ -10,9 +10,8 @@ alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
 
-# Show IP
-alias publicIP="curl inet-ip.info"
-alias localIP="ifconfig | grep 'inet ' | sed -e 's/^.*inet //' -e 's/ .*//'"
+# history
+alias history="history | fzf"
 
 # ls
 alias ls="lsd"
@@ -58,3 +57,7 @@ alias shutdown="sudo shutdown"
 alias editalias="code ~/.dotfiles/zsh/01_aliases.zsh"
 alias zshrc="code ~/.zshrc"
 alias tmuxconf="code ~/.tmux.conf"
+
+# Show IP
+alias publicIP="curl inet-ip.info"
+alias localIP="ifconfig | grep 'inet ' | sed -e 's/^.*inet //' -e 's/ .*//'"
