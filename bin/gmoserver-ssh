@@ -1,0 +1,14 @@
+#!/bin/sh
+gmo_login(){
+
+  # Define agruments
+  user=$1
+  host=$2
+  file=$3
+
+  # Decrypt password
+  PASSWORD=$(openssl rsautl -decrypt -inkey ~/.ssh/id_rsa -in ${file})
+
+  # Login with sshpass
+  sshpass -p ${PASSWORD} ssh ${host} -l ${user} -o 'StrictHostKeyChecking no' -oKexAlgorithms=+diffie-hellman-group1-sha1
+}

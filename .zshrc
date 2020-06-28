@@ -1,8 +1,7 @@
-# Enviroment setup for Go lang
+# Enviroment variables
 export PATH=$PATH:$GOPATH/bin
 export GOBIN=$GOPATH/bin
 export GOPATH=$HOME/.go
-# PATH for some owned script
 export PATH=$PATH:$HOME/.dotfiles/bin
 
 # Use color for terminal
@@ -40,7 +39,7 @@ setopt auto_cd
 setopt no_beep
 
 # Enable dir color
-eval `dircolors $HOME/.dircolors/dircolors.ansi-universal`
+eval `dircolors $HOME/.dircolors`
 
 # Add color for completion
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
@@ -49,7 +48,7 @@ zstyle ':completion:*:default' menu select=1
 # 補完で大文字にもマッチ
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # sudo の後ろでコマンド名を補完する
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /.dotfiles/bin
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin $HOME/.dotfiles/bin
 
 # Auto attach and detach tmux when login or logout shell
 function is_exists() { type "$1" >/dev/null 2>&1; return $?; }
@@ -141,13 +140,11 @@ zinit wait lucid for \
                 zsh-users/zsh-autosuggestions
 
 # Theme
-zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
-zinit light sindresorhus/pure
-# zinit light "denysdovhan/spaceship-zsh-theme"
+#zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+#zinit light "sindresorhus/pure"
+zinit light "denysdovhan/spaceship-zsh-theme"
 # # Show time
-#  SPACESHIP_TIME_SHOW=true
-zstyle :prompt:pure:git:stash show yes
-PROMPT='%F{white}%* '$PROMPT
+SPACESHIP_TIME_SHOW=true
 
 # Enhancd plugin
 zinit ice \
@@ -156,7 +153,6 @@ zinit ice \
   nocompile'!' \
   wait'!0'
 zinit light b4b4r07/enhancd
-
 
 # Binary release in archive, from GitHub-releases page.
 # After automatic unpacking it provides program "fzf".
