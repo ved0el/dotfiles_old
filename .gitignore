@@ -2,7 +2,10 @@
 .tmux/
 .zinit/bin
 .zinit
-bin/tosinkai*
+bin/*-login
 .vscode
 .icons
 .themes
+.config/fish/*
+!.config/fish/fishfile
+!.config/fish/my_functions

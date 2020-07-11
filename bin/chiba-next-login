@@ -1,7 +1,0 @@
-#!/bin/sh
-
-# Source the script to login to GMO server
-. ~/.dotfiles/bin/gmoserver-ssh
-
-# Run login function
-gmo_login sd0745256@gmoserver.jp ssh6.gmoserver.jp ~/.ssh/chiba-next.rsa
