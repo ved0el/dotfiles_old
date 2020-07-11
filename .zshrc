@@ -3,7 +3,10 @@ export PATH=$PATH:$GOPATH/bin
 export GOBIN=$GOPATH/bin
 export GOPATH=$HOME/.go
 export PATH=$PATH:$HOME/.dotfiles/bin
-
+export ENHANCD_COMMAND='cd'
+export ENHANCD_FILTER="fzy:fzf-tmux:fzf:peco:percol:gof:pick:icepick:sentaku:selecta"
+export FZF_DEFAULT_COMMAND="fd --type f"
+export FZF_DEFAULT_OPTS="--layout=reverse --inline-info"
 # Use color for terminal
 autoload -Uz colors
 colors
@@ -146,6 +149,11 @@ zinit light "denysdovhan/spaceship-zsh-theme"
 # # Show time
 SPACESHIP_TIME_SHOW=true
 
+# Binary release in archive, from GitHub-releases page.
+# After automatic unpacking it provides program "fzf".
+zinit ice from"gh-r" as"program"
+zinit load junegunn/fzf-bin
+
 # Enhancd plugin
 zinit ice \
   atclone'rm -rf conf.d; rm -rf functions; rm -f *.fish;' \
@@ -153,11 +161,6 @@ zinit ice \
   nocompile'!' \
   wait'!0'
 zinit light b4b4r07/enhancd
-
-# Binary release in archive, from GitHub-releases page.
-# After automatic unpacking it provides program "fzf".
-zinit ice from"gh-r" as"program"
-zinit load junegunn/fzf-bin
 
 # Sudo plugin (ESC to add sudo to last command)
 zinit snippet OMZ::plugins/sudo/sudo.plugin.zsh
