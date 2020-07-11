@@ -8,4 +8,5 @@ bin/*-login
 .themes
 .config/fish/*
 !.config/fish/fishfile
-!.config/fish/my_functions
+!.config/fish/custom.d
+!.config/fish/function.d
