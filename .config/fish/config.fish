@@ -20,7 +20,7 @@ for file in $CUSTOM_PATH/* $CUSTOM_FUNC/*
   source $file
 end
 
-# Auto attach tmux
+# Auto attach tmux when fish started
 function attach_tmux_session_if_needed
     set ID (tmux list-sessions)
     if test -z "$ID"
@@ -29,7 +29,7 @@ function attach_tmux_session_if_needed
     end
 
     set new_session "Create New Session"
-    set ID (echo $ID\n$new_session | fzf | cut -d: -f1)
+    set ID (echo $ID\n$new_session | fzf-tmux | cut -d: -f1)
     if test "$ID" = "$new_session"
         tmux new-session
     else if test -n "$ID"
@@ -37,4 +37,7 @@ function attach_tmux_session_if_needed
     end
 end
 
-eval  attach_tmux_session_if_needed
+if status is-interactive
+    and not set -q TMUX
+    eval attach_tmux_session_if_needed
+end
