@@ -3,17 +3,20 @@ set CUSTOM_FUNC "$__fish_config_dir/function.d"
 
 
 # Confign for Golang
-export GOPATH=$HOME/.go
-export GOBIN=$GOPATH/bin
+set -gx GOPATH $HOME/.go
+set -gx GOBIN $GOPATH/bin
 
 # Add user paths
-set -U fish_user_paths $HOME/.dotfiles/bin $GOPATH/bin $fish_user_paths
+set -gx fish_user_paths $HOME/.dotfiles/bin $GOPATH/bin $fish_user_paths
 
 # Enable clock for spacefish theme
 set SPACEFISH_TIME_SHOW true
 
 # Enable dircolors
 eval "dircolors $HOME/.dircolors >/dev/null 2>&1"
+
+# Config enhancd
+set -gx ENHANCD_FILTER "fzf-tmux:fzf:fzy"
 
 # Load custom configs, functions
 for file in $CUSTOM_PATH/* $CUSTOM_FUNC/*
