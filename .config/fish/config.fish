@@ -32,7 +32,7 @@ function attach_tmux_session_if_needed
     end
 
     set new_session "Create New Session"
-    set ID (echo $ID\n$new_session | fzf-tmux | cut -d: -f1)
+    set ID (echo $ID\n$new_session | $ENHANCD_FILTER | cut -d: -f1)
     if test "$ID" = "$new_session"
         tmux new-session
     else if test -n "$ID"
