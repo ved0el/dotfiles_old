@@ -21,7 +21,6 @@ alias lt="ls --tree"
 
 # remove
 alias rmf="sudo rm -rfi"
-alias rm="echo '🈲PROHIBITED🈲\nPlease use [trash] command.'; false"
 
 # yay
 alias yi="yay -S"
