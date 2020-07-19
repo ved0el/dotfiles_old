@@ -10,7 +10,7 @@ alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
 
 # history
-alias history="history | fzf"
+# alias history="history | fzf"
 
 # ls
 alias ls="lsd"

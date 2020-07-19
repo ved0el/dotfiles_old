@@ -1,23 +1,6 @@
 set CUSTOM_PATH "$__fish_config_dir/custom.d"
 set CUSTOM_FUNC "$__fish_config_dir/function.d"
 
-
-# Confign for Golang
-set -gx GOPATH $HOME/.go
-set -gx GOBIN $GOPATH/bin
-
-# Add user paths
-set -gx fish_user_paths $HOME/.dotfiles/bin $GOPATH/bin $fish_user_paths
-
-# Enable clock for spacefish theme
-set SPACEFISH_TIME_SHOW true
-
-# Enable dircolors
-eval "dircolors $HOME/.dircolors >/dev/null 2>&1"
-
-# Config enhancd
-set -gx ENHANCD_FILTER "fzf-tmux:fzf:fzy"
-
 # Load custom configs, functions
 for file in $CUSTOM_PATH/* $CUSTOM_FUNC/*
   source $file
@@ -32,7 +15,7 @@ function attach_tmux_session_if_needed
     end
 
     set new_session "Create New Session"
-    set ID (echo $ID\n$new_session | $ENHANCD_FILTER | cut -d: -f1)
+    set ID (echo $ID\n$new_session | fzf-tmux | cut -d: -f1)
     if test "$ID" = "$new_session"
         tmux new-session
     else if test -n "$ID"
