@@ -1,6 +1,7 @@
-set -U FZF_TMUX 1
-set -U FZF_TMUX_HEIGHT "80%"
-set -U FZF_TMUX_OPTS "-d 70%"
+set -U FZF_LEGACY_KEYBINDINGS 0
+set  FZF_TMUX 1
+set  FZF_TMUX_HEIGHT "80%"
+set  FZF_TMUX_OPTS "-d 70%"
 set -U FZF_PREVIEW_DIR_COMMAND "tree -C {} 2> /dev/null"
 set -U FZF_PREVIEW_FILE_COMMAND "bat {} 2> /dev/null"
 set -U FZF_PREVIEW_COMMAND "if test -f {}; \
@@ -11,7 +12,7 @@ set -U FZF_PREVIEW_COMMAND "if test -f {}; \
                           echo {}; \
                         end;"
 set -U FZF_DEFAULT_COMMAND "fd --type file --follow --hidden --color=always --exclude .git . $HOME"
-set -U FZF_DEFAULT_OPTS "--layout=reverse --inline-info
+set -U FZF_DEFAULT_OPTS "--layout=reverse --inline-info \
                         --preview '$FZF_PREVIEW_COMMAND' \
                         --preview-window=:hidden:right:60% \
                         --bind='?:toggle-preview' \
