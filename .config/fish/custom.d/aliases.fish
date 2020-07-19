@@ -6,11 +6,6 @@ alias .....="cd ../../../.."
 
 # grep
 alias grep="grep --color=auto"
-alias fgrep="fgrep --color=auto"
-alias egrep="egrep --color=auto"
-
-# history
-# alias history="history | fzf"
 
 # ls
 alias ls="lsd"
@@ -52,8 +47,6 @@ alias top="htop"
 # Others
 alias reboot="sudo reboot now"
 alias shutdown="sudo shutdown"
-alias editalias="code ~/.dotfiles/zsh/01_aliases.zsh"
-alias zshrc="code ~/.zshrc"
 alias tmuxconf="code ~/.tmux.conf"
 
 # Show IP
