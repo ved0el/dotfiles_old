@@ -1,3 +1,3 @@
 # Confign for Golang
-set -gx GOPATH $HOME/.go
-set -gx GOBIN $GOPATH/bin
+set -U GOPATH $HOME/src/go
+set -U GOBIN $GOPATH/bin
