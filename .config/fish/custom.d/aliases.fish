@@ -52,3 +52,5 @@ alias tmuxconf="code ~/.tmux.conf"
 # Show IP
 alias publicIP="curl inet-ip.info"
 alias localIP="ifconfig | grep 'inet ' | sed -e 's/^.*inet //' -e 's/ .*//'"
+
+# SSH terminal

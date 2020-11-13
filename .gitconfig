@@ -4,3 +4,7 @@
 
 [ghq]
 	root= ~/src
+[pull]
+	rebase = true
+[core]
+	editor = code
