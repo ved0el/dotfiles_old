@@ -34,3 +34,6 @@ if status is-interactive
     and not set -q TMUX
     eval attach_tmux_session_if_needed
 end
+
+#  Initialized starship
+starship init fish | source
