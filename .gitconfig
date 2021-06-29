@@ -1,5 +1,5 @@
 [user]
-	name = bl4ckl0tu5@XPS13
+	name = K@MBP
 	email = lqh5318@gmail.com
 
 [ghq]
@@ -7,4 +7,6 @@
 [pull]
 	rebase = true
 [core]
-	editor = code
+	editor = nano
+[init]
+	defaultBranch = main
