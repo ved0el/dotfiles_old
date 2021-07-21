@@ -6,13 +6,6 @@ for file in $CUSTOM_PATH/* $CUSTOM_FUNC/*
   source $file
 end
 
-# Install fisher it not exists
-if not functions -q fisher
-    set -q XDG_CONFIG_HOME; or set XDG_CONFIG_HOME ~/.config
-    curl https://git.io/fisher --create-dirs -sLo $XDG_CONFIG_HOME/fish/functions/fisher.fish
-    fish -c fisher
-end
-
 # Auto attach tmux when fish started
 function attach_tmux_session_if_needed
     set ID (tmux list-sessions)
