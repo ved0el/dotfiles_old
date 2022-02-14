@@ -1,5 +1,5 @@
 [user]
-	name = K@MBP
+	name = Leo@MBP
 	email = lqh5318@gmail.com
 
 [ghq]
@@ -7,6 +7,6 @@
 [pull]
 	rebase = true
 [core]
-	editor = nano
+	editor = vi
 [init]
 	defaultBranch = main
