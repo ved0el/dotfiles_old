@@ -1,13 +1,11 @@
+# TMUX plugins
 .tmux/plugins/
-.tmux/
-.zinit/bin
-.zinit
-bin/*-login
-.vscode
-.icons
-.themes
+
+# fish SHELL config (default : ignore all)
 .config/fish/*
-!.config/fish/fishfile
-!.config/fish/config.fish
+
+# fish SHELL config (add important config files)
 !.config/fish/custom.d
 !.config/fish/function.d
+!.config/fish/config.fish
+!.config/fish/fish_plugin

@@ -1,6 +1,0 @@
-[submodule ".zinit"]
-	path = .zinit/bin
-	url = https://github.com/zdharma/zinit.git
-[submodule ".tmux/plugins/tpm"]
-	path = .tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm.git
